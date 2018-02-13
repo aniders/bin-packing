@@ -88,12 +88,12 @@
 			<scope>provided</scope>
 		</dependency>
 
-		 <dependency>
+	<!-- <dependency>
             <groupId>com.google.ortools</groupId>
             <artifactId>ortools</artifactId>
             <version>1.0</version>
         </dependency>
-        
+        -->
         	
 		<!-- Test -->
 
