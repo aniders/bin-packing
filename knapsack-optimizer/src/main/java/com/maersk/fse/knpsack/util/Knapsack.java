@@ -1,13 +1,13 @@
 package com.maersk.fse.knpsack.util;
 
-import java.util.ArrayList;
+/*import java.util.ArrayList;
 
 import com.google.ortools.algorithms.KnapsackSolver;
 import com.maersk.fse.knpsack.dto.Problem;
 import com.maersk.fse.knpsack.dto.Solution;
-
+*/
 public class Knapsack {
-
+/*
     static {
         System.loadLibrary("jniortools");
     }
@@ -73,4 +73,5 @@ public class Knapsack {
     public static void main(String[] args) throws Exception {
         Knapsack.solve();
     }
+    */
 }
