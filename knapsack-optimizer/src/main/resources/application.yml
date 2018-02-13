@@ -1,0 +1,11 @@
+server:
+  contextPath: /knapsack
+
+logging:
+  level:
+    com.maersk.fse.kanpsack: DEBUG
+
+info:
+  build:
+    version: @project.version@
+    number: @build.number@
