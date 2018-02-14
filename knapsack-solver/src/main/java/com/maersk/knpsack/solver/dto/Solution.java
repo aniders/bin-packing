@@ -1,7 +1,12 @@
 package com.maersk.knpsack.solver.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public class Solution {
 
-    private Integer[] items;
-    private Integer time;
+    private int[] items;
+    private long time;
 }

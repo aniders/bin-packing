@@ -34,17 +34,16 @@ public class KnapsackOptimizeControllerTest {
     private MockMvc mockMvc;
 
     @Mock
-    private KnapsackSolver knapsackServiceMock;
+    private KnapsackSolver knapsackSolverMock;
 
     @InjectMocks
     private KnapsackSolverController knapsackController;
-
+    
     @Mock
-    private RequestValidator requestValidatorMock;
+    private RequestValidator requestValidator;
 
     @Mock
     private Principal principal;
-
 
     @Mock
     private SecurityContext securityContext;
@@ -54,19 +53,20 @@ public class KnapsackOptimizeControllerTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(knapsackController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(knapsackController).setValidator(requestValidator).build();
     }
 
     
      @Test
      public void submitProblemTest() throws Exception {
-//     Problem request = Problem.builder().capacity(430).weights(new Integer[] {10, 20, 33}).values(new Integer[] {10, 3, 30}).build();
-//     String json = objectMapper.writeValueAsString(request);
-//     Solution t1 = new Solution();
-//     when(principal.getName()).thenReturn("app1");
-//     when(knapsackServiceMock.solve(request)).thenReturn(t1);
-//    
-//     mockMvc.perform(post("/solve").principal(principal).content(json).contentType(APPLICATION_JSON)).andExpect(status().isCreated());
+     Problem request = Problem.builder().capacity(60).weights(new int[] {10, 20, 33}).values(new int[] {10, 3, 30}).build();
+     String json = objectMapper.writeValueAsString(request);
+     Solution t1 = new Solution(new int[] {0, 2}, 0);
+     when(principal.getName()).thenReturn("app1");
+     when(knapsackSolverMock.solve(request)).thenReturn(t1);
+    
+     mockMvc.perform(post("/solve").principal(principal).content(json).contentType(APPLICATION_JSON)).andExpect(status().isCreated());
+    		 
      }
-
-    }
+     
+   }

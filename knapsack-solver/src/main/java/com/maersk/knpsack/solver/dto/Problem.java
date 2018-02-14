@@ -3,8 +3,7 @@ package com.maersk.knpsack.solver.dto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.ToString;
-
+import lombok.NoArgsConstructor;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
@@ -13,19 +12,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Builder
 @Getter
 @AllArgsConstructor
-@ToString
+@NoArgsConstructor
 public class Problem {
 
-    @Min(1)
+    @Min(0)
     @JsonProperty("capacity")
-    private Integer capacity;
+    private int capacity;
     
     @NotNull
     @JsonProperty("weights")
-    private Integer[] weights;
+    private int[] weights;
     
     @NotNull
     @JsonProperty("values")
-    private Integer[] values;
+    private int[] values;
 
 }

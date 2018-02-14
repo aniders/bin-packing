@@ -11,7 +11,6 @@ import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-//@Entity
 @Builder
 @Getter
 @AllArgsConstructor
@@ -21,14 +20,14 @@ public class Problem {
 
     @Min(0)
     @JsonProperty("capacity")
-    private long capacity;
+    private int capacity;
     
     @NotNull
     @JsonProperty("weights")
-    private long[] weights;
+    private int[] weights;
     
     @NotNull
     @JsonProperty("values")
-    private long[] values;
+    private int[] values;
 
 }

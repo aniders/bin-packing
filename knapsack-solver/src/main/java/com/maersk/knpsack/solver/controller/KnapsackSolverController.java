@@ -18,6 +18,7 @@ import com.maersk.knpsack.solver.dto.Problem;
 import com.maersk.knpsack.solver.dto.Solution;
 import com.maersk.knpsack.solver.exception.BadRequestException;
 import com.maersk.knpsack.solver.service.KnapsackSolver;
+import com.maersk.knpsack.solver.util.RequestValidator;
 
 @RestController
 @Api(description = "Kapsack Solver. ")
@@ -27,16 +28,19 @@ public class KnapsackSolverController {
 
     @Autowired
     private KnapsackSolver solver;
+    @Autowired
+    private RequestValidator validator;
 
     @PostMapping(value = "/solve")
     @ApiOperation(value = "Submit new problem task", produces = "application/json")
     public ResponseEntity<Solution> submitTask(@RequestBody Problem request, BindingResult result, Principal principle) {
         LOGGER.debug("Solving Problem task with values {}", request);
+        validator.validate(request, result);
         if (result.hasErrors()) {
             throw new BadRequestException(result.getAllErrors());
         }
         Solution submittedTask = solver.solve(request);
-        return new ResponseEntity<Solution>(submittedTask, HttpStatus.OK);
+        return new ResponseEntity<Solution>(submittedTask, HttpStatus.CREATED);
     }
 
 }

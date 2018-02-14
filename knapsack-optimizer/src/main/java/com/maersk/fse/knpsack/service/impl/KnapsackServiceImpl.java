@@ -12,7 +12,6 @@ import com.maersk.fse.knpsack.dto.Problem;
 import com.maersk.fse.knpsack.dto.Solution;
 import com.maersk.fse.knpsack.dto.Task;
 import com.maersk.fse.knpsack.service.KnapsackService;
-import com.maersk.fse.knpsack.util.Knapsack;
 
 @Service
 public class KnapsackServiceImpl implements KnapsackService {
@@ -31,7 +30,7 @@ public class KnapsackServiceImpl implements KnapsackService {
     public Task submitTask(Problem problem) {
         LOGGER.info("Submitting new Task to an Optimizer");
         //TODO submit task to optimizer  ??????
-        //Solution solution = Knapsack.solve(problem);
+       // Solution solution = Knapsack.solve(problem);
 
         Task submittedTask = new Task();
         dao.addTask(submittedTask, problem);

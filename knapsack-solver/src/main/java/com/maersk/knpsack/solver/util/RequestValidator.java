@@ -12,9 +12,6 @@ public class RequestValidator implements Validator {
     public void validate(Object target, Errors errors) {
         Problem request = (Problem) target;
 
-        if (request.getCapacity() == null) {
-            errors.rejectValue("capacity", "error.capacity", "capacity is required");
-        }
         if (request.getWeights() == null) {
             errors.rejectValue("weights", "error.weights", "weights are required");
         }
