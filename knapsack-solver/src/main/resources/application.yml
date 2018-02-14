@@ -1,0 +1,11 @@
+server:
+  contextPath: /solver
+
+logging:
+  level:
+    com.maersk.kanpsack.solver: DEBUG
+
+info:
+  build:
+    version: @project.version@
+    number: @build.number@
