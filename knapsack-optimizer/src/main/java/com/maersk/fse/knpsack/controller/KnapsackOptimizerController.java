@@ -2,6 +2,8 @@ package com.maersk.fse.knpsack.controller;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -85,15 +87,17 @@ public class KnapsackOptimizerController {
 
     @PostMapping(value = "/tasks")
     @ApiOperation(value = "Submit new problem task", produces = "application/json")
-    public ResponseEntity<Task> submitTask(@RequestBody Problem request, BindingResult result, Principal principle) {
+    public Future<Task> submitTask(@RequestBody Problem request, BindingResult result, Principal principle) {
         LOGGER.debug("Submitting Problem task with values {}", request);
         requestValidator.validate(request, result);
         if (result.hasErrors()) {
             throw new BadRequestException(result.getAllErrors());
         }
-        Task submittedTask = knapsackService.submitTask(request);
-        return new ResponseEntity<Task>(submittedTask, HttpStatus.CREATED);
+        
+        CompletableFuture<Task> future = new CompletableFuture<>();
+		return CompletableFuture.supplyAsync(() -> knapsackService.submitTask(request));
     }
+    
 //
 //    @PutMapping(value = "/{id}")
 //    @ApiOperation(value = "Update a message", produces = "application/json")
