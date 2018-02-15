@@ -17,7 +17,7 @@
 	<description>Knapsack Solver.</description>
 
 
-		<properties>
+	<properties>
 
 		<!-- Dev Properties -->
 		<swagger.version>2.6.1</swagger.version>
@@ -57,6 +57,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
 		<!-- Swagger -->
 
 		<dependency>
@@ -88,13 +94,8 @@
 			<scope>provided</scope>
 		</dependency>
 
-<!-- 
-		<dependency>
-			<groupId>com.google.ortools</groupId>
-			<artifactId>ortools</artifactId>
-			<version>v2015-08</version>
-			<type>pom</type>
-		</dependency> -->
+		<!-- <dependency> <groupId>com.google.ortools</groupId> <artifactId>ortools</artifactId> 
+			<version>v2015-08</version> <type>pom</type> </dependency> -->
 		<!-- Test -->
 
 		<dependency>

@@ -9,3 +9,8 @@ info:
   build:
     version: @project.version@
     number: @build.number@
+
+endpoints:
+  shutdown:
+     sensitive: true
+     enabled: true
