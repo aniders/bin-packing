@@ -112,11 +112,11 @@ public class KnapsackOptimizeControllerTest {
 
      @Test
      public void submitProblemTest() throws Exception {
-     Problem request = Problem.builder().capacity(430).weights(new int[] {10, 20, 33}).values(new int[] {10, 3, 30}).build();
+     Problem request = Problem.builder().capacity(60).weights(new int[] {10, 20, 33}).values(new int[] {10, 3, 30}).build();
      String json = objectMapper.writeValueAsString(request);
      Task t1 = new Task();
      when(principal.getName()).thenReturn("user1@test.com");
-     when(knapsackServiceMock.submitTask(request)).thenReturn(t1);
+    // when(knapsackServiceMock.submitTask(request)).thenReturn(t1);
     
      mockMvc.perform(post("/tasks").principal(principal).content(json).contentType(APPLICATION_JSON)).andExpect(status().isCreated());
      }

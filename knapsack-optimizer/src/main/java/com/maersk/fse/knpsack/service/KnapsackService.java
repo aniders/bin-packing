@@ -1,7 +1,6 @@
 package com.maersk.fse.knpsack.service;
 
 import java.util.List;
-
 import com.maersk.fse.knpsack.dto.Problem;
 import com.maersk.fse.knpsack.dto.Solution;
 import com.maersk.fse.knpsack.dto.Task;
@@ -15,10 +14,11 @@ public interface KnapsackService {
 
     /**
      * 
+     * @param task 
      * @param request
      * @return
      */
-    public Task submitTask(Problem request);
+    public Task submitTask(Task task, Problem request);
 
     /**
      * 

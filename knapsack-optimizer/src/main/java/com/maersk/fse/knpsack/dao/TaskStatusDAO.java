@@ -17,5 +17,7 @@ public interface TaskStatusDAO {
     Problem getProblem(String task);
 
     Solution getSolution(String task);
+    
+    void addSolution(String task, Solution solution);
 
 }

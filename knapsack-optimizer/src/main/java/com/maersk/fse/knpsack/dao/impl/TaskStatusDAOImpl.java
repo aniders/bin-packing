@@ -55,6 +55,14 @@ public class TaskStatusDAOImpl implements TaskStatusDAO {
         return solutionStore.get(task);
     }
 
+
+    @Override
+    public void addSolution(String task, Solution solution) {
+        solutionStore.put(task, solution);
+    }
+    
+    
+
     
 
       

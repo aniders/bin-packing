@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -85,56 +86,19 @@ public class KnapsackOptimizerController {
         return new ResponseEntity<SolutionResponse>(new SolutionResponse(taskId, problem, response ), HttpStatus.OK);
     }
 
+   
     @PostMapping(value = "/tasks")
     @ApiOperation(value = "Submit new problem task", produces = "application/json")
-    public Future<Task> submitTask(@RequestBody Problem request, BindingResult result, Principal principle) {
+    public Task submitTask(@RequestBody Problem request, BindingResult result, Principal principle) {
         LOGGER.debug("Submitting Problem task with values {}", request);
         requestValidator.validate(request, result);
         if (result.hasErrors()) {
             throw new BadRequestException(result.getAllErrors());
         }
-        
-        CompletableFuture<Task> future = new CompletableFuture<>();
-		return CompletableFuture.supplyAsync(() -> knapsackService.submitTask(request));
+        Task task = new Task();
+        knapsackService.submitTask(task, request);
+		return task;
     }
     
-//
-//    @PutMapping(value = "/{id}")
-//    @ApiOperation(value = "Update a message", produces = "application/json")
-//    public ResponseEntity<Message> update(@PathVariable String id, @RequestBody Problem request, BindingResult result, Principal principle) {
-//        LOGGER.debug("Update request by Client {} for message {}", principle.getName(), request.toString());
-//
-//        Long messageId = requestValidator.validateMessageId(id, result);
-//        request.setClientId(principle.getName());
-//        requestValidator.validate(request, result);
-//        if (result.hasErrors()) {
-//            throw new BadRequestException();
-//        }
-//        if(knapsackService.canUpdateDeleteMessage(messageId, request.getClientId())){
-//            knapsackService.updateMessage(messageId, request);
-//            Message message = knapsackService.getById(messageId);
-//            return new ResponseEntity<Message>(message, HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-//        }
-//       
-//    }
-
-//    @DeleteMapping(value = "/{id}")
-//    @ApiOperation(value = "Delete a message")
-//    public ResponseEntity delete(@PathVariable String id, BindingResult result, Principal principle) {
-//        LOGGER.debug("Delete message with id {} ", id);
-//        
-//        Long messageId = requestValidator.validateMessageId(id, result);
-//        if (result.hasErrors()) {
-//            throw new BadRequestException();
-//        }
-//        if(knapsackService.canUpdateDeleteMessage(messageId, principle.getName())){
-//            knapsackService.deleteMessage(messageId);
-//            return new ResponseEntity<>(HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-//        }
-//    }
 
 }

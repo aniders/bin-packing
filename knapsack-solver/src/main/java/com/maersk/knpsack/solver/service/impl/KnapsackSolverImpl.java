@@ -34,6 +34,15 @@ public class KnapsackSolverImpl implements KnapsackSolver {
 	}
 
 	private final int[] solve(int[] values, int[] weights, int capacity) {
+		// TODO remove this bit, added temporarily to simulate processing delays 
+		if(capacity == 70) {
+			try {
+				Thread.sleep(1000 * 60 * 2);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		if (weights.length != values.length)
 			return null;
 
