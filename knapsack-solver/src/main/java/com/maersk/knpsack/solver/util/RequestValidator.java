@@ -12,14 +12,17 @@ public class RequestValidator implements Validator {
     public void validate(Object target, Errors errors) {
         Problem request = (Problem) target;
 
+        if (request.getCapacity() < 0) {
+            errors.rejectValue("capacity", "capacity must be greater than 0");
+        }
         if (request.getWeights() == null) {
-            errors.rejectValue("weights", "error.weights", "weights are required");
+            errors.rejectValue("weights", "weights are required");
         }
         if (request.getValues() == null) {
-            errors.rejectValue("values", "error.values", "values are required");
+            errors.rejectValue("values", "values are required");
         } else {
             if (request.getValues().length != request.getWeights().length) {
-                errors.rejectValue("values", "error.values", "values must be as many as weights");
+                errors.rejectValue("values", "values must be as many as weights");
             } 
         }
     }

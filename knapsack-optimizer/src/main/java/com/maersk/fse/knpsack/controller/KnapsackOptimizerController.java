@@ -89,7 +89,7 @@ public class KnapsackOptimizerController {
    
     @PostMapping(value = "/tasks")
     @ApiOperation(value = "Submit new problem task", produces = "application/json")
-    public Task submitTask(@RequestBody Problem request, BindingResult result, Principal principle) {
+    public ResponseEntity<Task> submitTask(@RequestBody Problem request, BindingResult result, Principal principle) {
         LOGGER.debug("Submitting Problem task with values {}", request);
         requestValidator.validate(request, result);
         if (result.hasErrors()) {
@@ -97,7 +97,7 @@ public class KnapsackOptimizerController {
         }
         Task task = new Task();
         knapsackService.submitTask(task, request);
-		return task;
+		return new ResponseEntity<Task>(task,  HttpStatus.CREATED) ;
     }
     
 

@@ -116,7 +116,7 @@ public class KnapsackOptimizeControllerTest {
      String json = objectMapper.writeValueAsString(request);
      Task t1 = new Task();
      when(principal.getName()).thenReturn("user1@test.com");
-    // when(knapsackServiceMock.submitTask(request)).thenReturn(t1);
+     when(knapsackServiceMock.submitTask(t1, request)).thenReturn(t1);
     
      mockMvc.perform(post("/tasks").principal(principal).content(json).contentType(APPLICATION_JSON)).andExpect(status().isCreated());
      }

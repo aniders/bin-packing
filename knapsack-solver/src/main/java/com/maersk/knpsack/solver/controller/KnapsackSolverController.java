@@ -24,23 +24,24 @@ import com.maersk.knpsack.solver.util.RequestValidator;
 @Api(description = "Kapsack Solver. ")
 public class KnapsackSolverController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(KnapsackSolverController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(KnapsackSolverController.class);
 
-    @Autowired
-    private KnapsackSolver solver;
-    @Autowired
-    private RequestValidator validator;
+	@Autowired
+	private KnapsackSolver solver;
+	@Autowired
+	private RequestValidator validator;
 
-    @PostMapping(value = "/solve")
-    @ApiOperation(value = "Submit new problem task", produces = "application/json")
-    public ResponseEntity<Solution> submitTask(@RequestBody Problem request, BindingResult result, Principal principle) {
-        LOGGER.debug("Solving Problem task with values {}", request);
-        validator.validate(request, result);
-        if (result.hasErrors()) {
-            throw new BadRequestException(result.getAllErrors());
-        }
-        Solution submittedTask = solver.solve(request);
-        return new ResponseEntity<Solution>(submittedTask, HttpStatus.CREATED);
-    }
+	@PostMapping(value = "/solve")
+	@ApiOperation(value = "Submit new problem task", produces = "application/json")
+	public ResponseEntity<Solution> submitTask(@RequestBody Problem request, BindingResult result,
+			Principal principle) {
+		LOGGER.debug("Solving Problem task with values {}", request);
+		validator.validate(request, result);
+		if (result.hasErrors()) {
+			throw new BadRequestException(result.getAllErrors());
+		}
+		Solution submittedTask = solver.solve(request);
+		return new ResponseEntity<Solution>(submittedTask, HttpStatus.CREATED);
+	}
 
 }

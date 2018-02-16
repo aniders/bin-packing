@@ -1,18 +1,4 @@
-server:
-  contextPath: /knapsack
-  port: 9091
-
-logging:
-  level:
-    com.maersk.fse.kanpsack: DEBUG
-
-info:
-  build:
-    version: @project.version@
-    number: @build.number@
-    
-endpoints:
-   shutdown:
-     sensitive: true
-     enabled: true
-    
+knapsack:
+  solver:
+    service:
+        url: http://knapsack-solver-service/solver
