@@ -16,7 +16,3 @@ endpoints:
      sensitive: true
      enabled: true
     
-solver:
-   app:
-      user: admin
-      key: aniders

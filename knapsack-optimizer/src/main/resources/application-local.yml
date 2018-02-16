@@ -1,0 +1,4 @@
+knapsack:
+  solver:
+    service:
+        url: http://localhost:8080/solver

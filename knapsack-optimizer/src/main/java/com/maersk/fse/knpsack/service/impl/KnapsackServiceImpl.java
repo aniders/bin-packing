@@ -6,6 +6,7 @@ import java.util.concurrent.CompletableFuture;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -35,6 +36,17 @@ public class KnapsackServiceImpl implements KnapsackService {
     
     @Autowired
     private ObjectMapper objectMapper;
+    
+    @Value("${solver.app.user}")
+    private String solverAppUser;
+    
+    @Value("${solver.app.key}")
+    private String solverAppKey;
+
+    @Value("${knapsack.solver.service.url}")
+    private String solverApiUrl;
+
+
 
     @Autowired
     public KnapsackServiceImpl(TaskStatusDAO dao) {
@@ -55,6 +67,8 @@ public class KnapsackServiceImpl implements KnapsackService {
     private Task callSover(Task submittedTask, Problem problem) {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(new MediaType[] { MediaType.APPLICATION_JSON }));
+        
+        System.out.println(solverAppUser+" : "+ solverAppKey);
         // String username;
         // String password;
         // String auth = username + ":" + password;
@@ -72,7 +86,7 @@ public class KnapsackServiceImpl implements KnapsackService {
         }
         HttpEntity<String> entity = new HttpEntity<String>(problemJson, headers);
 
-        ResponseEntity<Solution> response = restTemplate.postForEntity("http://localhost:8080/solver/solve", entity, Solution.class);
+        ResponseEntity<Solution> response = restTemplate.postForEntity(solverApiUrl+"/solve", entity, Solution.class);
         Solution solution = response.getBody();
 
         dao.addSolution(submittedTask.getTask(), solution);

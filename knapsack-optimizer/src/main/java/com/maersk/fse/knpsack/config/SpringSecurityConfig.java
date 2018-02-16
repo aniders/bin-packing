@@ -30,8 +30,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
          http
         .csrf().disable()
         .authorizeRequests()
-          .antMatchers(HttpMethod.PUT,"/knapsack/messages/").permitAll()//allow CORS option calls
-          .antMatchers(HttpMethod.DELETE,"/knapsack/messages/").permitAll()//allow CORS option calls
           .antMatchers("/resources/**").permitAll()
           .anyRequest().authenticated()
         .and()
