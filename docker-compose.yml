@@ -1,0 +1,26 @@
+version: "3"
+services:
+  knapsack-solver:
+        container_name: knapsack-solver
+        build:
+            context: ./knapsack-solver
+            dockerfile: Dockerfile
+        image: knapsack-solver:latest
+        expose:
+            - 8080
+        
+    knapsack-optimizer-service:
+        container_name: knapsack-optimizer-service
+        build:
+            context: ./knapsack-optimizer-service
+            dockerfile: Dockerfile
+        image: knapsack-optimizer-service:latest
+        expose:
+            - 9091
+        ports:
+            - 9091:9091
+        links:
+            - knapsack-solver:knapsack-solver
+        depends_on:
+            - knapsack-solver
+        
