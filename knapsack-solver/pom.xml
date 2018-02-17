@@ -11,7 +11,7 @@
 
 	<groupId>com.maersk.knapsack.solver</groupId>
 	<artifactId>knapsack-solver</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>knapsack-solver</name>
 	<packaging>jar</packaging>
 	<description>Knapsack Solver.</description>
@@ -93,10 +93,6 @@
 			<version>${lombok.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
-		<!-- <dependency> <groupId>com.google.ortools</groupId> <artifactId>ortools</artifactId> 
-			<version>v2015-08</version> <type>pom</type> </dependency> -->
-		<!-- Test -->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
