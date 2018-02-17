@@ -1,6 +1,7 @@
 package com.maersk.fse.knpsack.service.impl;
 
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import org.slf4j.Logger;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
@@ -33,20 +35,18 @@ public class KnapsackServiceImpl implements KnapsackService {
     private RestTemplate restTemplate;
 
     private TaskStatusDAO dao;
-    
+
     @Autowired
     private ObjectMapper objectMapper;
-    
+
     @Value("${solver.app.user}")
     private String solverAppUser;
-    
+
     @Value("${solver.app.key}")
     private String solverAppKey;
 
     @Value("${knapsack.solver.service.url}")
     private String solverApiUrl;
-
-
 
     @Autowired
     public KnapsackServiceImpl(TaskStatusDAO dao) {
@@ -67,15 +67,12 @@ public class KnapsackServiceImpl implements KnapsackService {
     private Task callSover(Task submittedTask, Problem problem) {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(new MediaType[] { MediaType.APPLICATION_JSON }));
-        
-        System.out.println(solverAppUser+" : "+ solverAppKey);
-        // String username;
-        // String password;
-        // String auth = username + ":" + password;
-        // byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")) );
-        // String authHeader = "Basic " + new String( encodedAuth );
-        // //set( "Authorization", authHeader );
-        headers.add("Authorization", "Basic YXBwOmFuaWRlcnM=");
+
+        System.out.println(solverAppUser + " : " + solverAppKey);
+        String auth = solverAppUser + ":" + solverAppKey;
+        byte[] encodedBytes = Base64.getEncoder().encode(auth.getBytes());
+
+        headers.add("Authorization", "Basic " + new String(encodedBytes));
         headers.setContentType(MediaType.APPLICATION_JSON);
         String problemJson = "";
 
@@ -85,9 +82,11 @@ public class KnapsackServiceImpl implements KnapsackService {
             LOGGER.error("Unable to parse Problem request", problem);
         }
         HttpEntity<String> entity = new HttpEntity<String>(problemJson, headers);
+        ResponseEntity<Solution> response = restTemplate.exchange(solverApiUrl + "/solve", HttpMethod.POST, entity, Solution.class);
 
-        ResponseEntity<Solution> response = restTemplate.postForEntity(solverApiUrl+"/solve", entity, Solution.class);
         Solution solution = response.getBody();
+        System.out.println("Response "+response.getStatusCodeValue());
+        System.out.println("Response "+response);
 
         dao.addSolution(submittedTask.getTask(), solution);
         dao.getTaskStatus(submittedTask.getTask()).setStatus(Status.COMPLETED.getValue());

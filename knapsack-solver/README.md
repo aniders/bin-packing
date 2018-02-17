@@ -16,11 +16,7 @@ $ java -jar target\ knapsack-solver-${project.version}.jar
 Services are protected with basic authentication with in memory user credentials. 
 Use following - 
 
-``user : password``
-
-``user2@test.com : password``
-
-``user3@test.com : password``
+``app : aniders``
 
 
 ## Notes 

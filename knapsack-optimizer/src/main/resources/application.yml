@@ -1,6 +1,6 @@
 server:
   contextPath: /knapsack
-  port: 9091
+  port: 6543
 
 logging:
   level:
@@ -18,5 +18,5 @@ endpoints:
     
 solver:
    app:
-      user: admin
+      user: app
       key: aniders
