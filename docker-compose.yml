@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 services:
   knapsack-solver:
         container_name: knapsack-solver
@@ -8,6 +8,11 @@ services:
         image: knapsack-solver:latest
         expose:
             - 8080
+        ports:
+            - target: 8080
+              published: 8080
+              protocol: tcp
+              mode: host
         
     knapsack-optimizer-service:
         container_name: knapsack-optimizer-service
@@ -18,7 +23,10 @@ services:
         expose:
             - 9091
         ports:
-            - 9091:9091
+            - target: 9091
+              published: 9091
+              protocol: tcp
+              mode: host
         links:
             - knapsack-solver:knapsack-solver
         depends_on:
