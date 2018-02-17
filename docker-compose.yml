@@ -5,7 +5,7 @@ services:
         build:
             context: ./knapsack-solver
             dockerfile: Dockerfile
-        image: knapsack-solver:latest
+        image: gcr.io/protean-unity-193306/knapsack-solver:latest
         expose:
             - "8080"
         ports:
@@ -15,11 +15,11 @@ services:
         build:
             context: ./knapsack-optimizer
             dockerfile: Dockerfile
-        image: knapsack-optimizer-service:latest
+        image: gcr.io/protean-unity-193306/knapsack-optimizer-service:latest
         expose:
-            - 9091
+            - 6543
         ports:
-            - "9091:9091"
+            - "6543:6543"
         links:
             - knapsack-solver:knapsack-solver
         depends_on:
