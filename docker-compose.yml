@@ -7,28 +7,20 @@ services:
             dockerfile: Dockerfile
         image: knapsack-solver:latest
         expose:
-            - 8080
+            - "8080"
         ports:
-            - target: 8080
-              published: 8080
-              protocol: tcp
-              mode: host
-        
-    knapsack-optimizer-service:
+            - "8080:8080"
+  knapsack-optimizer-service:
         container_name: knapsack-optimizer-service
         build:
-            context: ./knapsack-optimizer-service
+            context: ./knapsack-optimizer
             dockerfile: Dockerfile
         image: knapsack-optimizer-service:latest
         expose:
             - 9091
         ports:
-            - target: 9091
-              published: 9091
-              protocol: tcp
-              mode: host
+            - "9091:9091"
         links:
             - knapsack-solver:knapsack-solver
         depends_on:
             - knapsack-solver
-        
