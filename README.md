@@ -3,7 +3,42 @@ Knapsack Optimizer Service
 
 
 
+## Project structure 
+```
+ .
+    ├── knapsack-optimizer           # /kanpsack service build using spring-boot (/knapsack)
+    ├── knapsack-solver              # /solver A solver implementation for knapsack problems
+    ├── docker-compose.yml           # commands to build run both /kanpsack and /solver together in isolated environment
+    ├── README.md                    # Project related information here. 
+    └── Datasets.md                  # Datasets to benchmark Optimizer 
+```
 
+
+## knapsack-optimizer - 
+Runs on `port 6543` and context path `/kanpsack ` supports following endpoints 
+
+* POST `/knapsack/tasks`  
+content: `application/json` with knapsack problem specification  
+output: `json` with task status   
+
+* GET `/knapsack/tasks/<id>`  
+output: `json` with task status (id, status, timestamp of last status update)   
+
+* GET `/knapsack/solutions/<id>`    
+output: `json` with solution details   
+ 
+* GET `/knapsack/admin/tasks`      
+output: `json` with a list of submitted, running, and completed tasks   
+
+* POST `/knapsack/shutdown`   
+
+* GET `/knapsack/status`  
+
+``Browse swagger UI to find detailed API documentation http://localhost:6543/knapsack/swagger-ui.html``
+
+## knapsack-solver
+A rest service used by `knapsack-optimizer` to perform task. This service is being called in Async mode. 
+This micro-service runs along with optimizer inside Docker container, and is accessible by optimizer using service name.
 
 
 ##Running on Google Compute Engine instance (Container-Optimized OS, no pre-installed java / mvn. comes with Docker container runtime) 
@@ -31,7 +66,7 @@ This will start both applications. /knapsack service on port 6543 and /solver on
 
 
 3. Install kompose   
-kompose is a convenience tool to go from local Docker development to managing your application with Kubernetes.   
+kompose is a convenience tool to go from local Docker development to managing application with Kubernetes.   
 ``curl -L https://github.com/kubernetes/kompose/releases/download/v1.9.0/kompose-linux-amd64 -o kompose ``  
 ``chmod +x kompose``   
 ``sudo mv ./kompose /usr/local/bin/kompose ``  
@@ -45,4 +80,17 @@ kompose is a convenience tool to go from local Docker development to managing yo
 
 
 6. start composite apps   
-``kompose up  ``  
+`kompose up  `  
+
+
+7. Service starts on port 6543 
+
+
+
+
+
+### Applicating URL 
+`Services are deployed on Google Cloud platform, Kubernetes Engine   `    
+>`http://35.226.56.235:6543/knapsack/swagger-ui.html `
+
+`See /kanpsack-optimizer/README.md for user credentials to access deployed services. `

@@ -91,7 +91,7 @@ public class KnapsackServiceImpl implements KnapsackService {
         dao.getTaskStatus(submittedTask.getTask()).getTimestamps().setStarted(System.currentTimeMillis() / 1000L);
         System.out.println("calling solver "+solverApiUrl);
         System.out.println("entity "+entity);
-        ResponseEntity<Solution> response = restTemplate.exchange(solverApiUrl + "/solve", HttpMethod.POST, entity, Solution.class);
+        ResponseEntity<Solution> response = restTemplate.postForEntity(solverApiUrl + "/solve", entity, Solution.class);
 
         Solution solution = response.getBody();
         System.out.println("Response " + response.getStatusCodeValue());

@@ -29,7 +29,7 @@ public class KnapsackSolverImpl implements KnapsackSolver {
 		int items[] = solve(request.getValues(), request.getWeights(), request.getCapacity());
 		long timeTaken = System.currentTimeMillis() - startTime;
 		Solution sol = new Solution(items, timeTaken);
-		LOGGER.debug("Time taken by Solver in millis {} for analysing {} items ", timeTaken, request.getValues().length);
+		LOGGER.info("Time taken by Solver in millis {} for analysing {} items ", timeTaken, request.getValues().length);
 		return sol;
 	}
 
