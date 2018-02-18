@@ -7,20 +7,6 @@ import lombok.Getter;
 @Getter
 public class Task {
 
-    public enum Status {
-        SUBMITTED("submitted"), STARTED("started"), COMPLETED("completed");
-
-        String value;
-
-        Status(String status) {
-            this.value = status;
-        }
-
-        public String getValue() {
-            return value;
-        }
-    }
-
     private String task;
 
     private String status;
@@ -37,7 +23,25 @@ public class Task {
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    
+
+    /**
+     * Task statuses - submitted, started, completed
+     * 
+     * @author Aniruddh
+     *
+     */
+    public enum Status {
+        SUBMITTED("submitted"), STARTED("started"), COMPLETED("completed");
+
+        String value;
+
+        Status(String status) {
+            this.value = status;
+        }
+
+        public String getValue() {
+            return value;
+        }
+    }
 
 }

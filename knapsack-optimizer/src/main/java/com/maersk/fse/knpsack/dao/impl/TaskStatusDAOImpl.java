@@ -11,13 +11,27 @@ import com.maersk.fse.knpsack.dto.Problem;
 import com.maersk.fse.knpsack.dto.Solution;
 import com.maersk.fse.knpsack.dto.Task;
 
+/**
+ * DAO to store Task and Solution details in data store. An in-memory datastore is used, Alternatively this can be extended to interface
+ * with Database
+ * <p/>
+ * 
+ * taskStore - stores Task details.
+ * <p/>
+ * problemStore - stores submitted Problems.
+ * <p/>
+ * solutionStore - stores Solution for submitted task, when it is available.
+ * 
+ * @author Aniruddh
+ *
+ */
 @Component
 public class TaskStatusDAOImpl implements TaskStatusDAO {
 
     private HashMap<String, Task> taskStore;
-    
+
     private HashMap<String, Problem> problemStore;
-    
+
     private HashMap<String, Solution> solutionStore;
 
     public TaskStatusDAOImpl() {
@@ -26,7 +40,6 @@ public class TaskStatusDAOImpl implements TaskStatusDAO {
         solutionStore = new HashMap<String, Solution>();
     }
 
-   
     @Override
     public void addTask(Task submittedTask, Problem problem) {
         taskStore.put(submittedTask.getTask(), submittedTask);
@@ -43,27 +56,19 @@ public class TaskStatusDAOImpl implements TaskStatusDAO {
         return new ArrayList<Task>(taskStore.values());
     }
 
-
     @Override
     public Problem getProblem(String task) {
         return problemStore.get(task);
     }
-
 
     @Override
     public Solution getSolution(String task) {
         return solutionStore.get(task);
     }
 
-
     @Override
     public void addSolution(String task, Solution solution) {
         solutionStore.put(task, solution);
     }
-    
-    
 
-    
-
-      
 }

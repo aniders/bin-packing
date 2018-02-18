@@ -62,7 +62,7 @@ public class KnapsackOptimizerController {
     }
     
     @GetMapping(value = "/solutions/{taskId}")
-    @ApiOperation(value = "Returns solution to the Tassk with {id}", produces = "application/json")
+    @ApiOperation(value = "Returns solution of a Completed task with {id}", produces = "application/json")
     public ResponseEntity<SolutionResponse> getSolution(@PathVariable String taskId) {
         LOGGER.debug("Checking status of Task with id {}", taskId);
         Task task = knapsackService.getTaskById(taskId);
@@ -85,15 +85,16 @@ public class KnapsackOptimizerController {
    
     @PostMapping(value = "/tasks")
     @ApiOperation(value = "Submit new problem task", produces = "application/json")
-    public ResponseEntity<Task> submitTask(@RequestBody Problem request, BindingResult result, Principal principle) {
+    public ResponseEntity<Object> submitTask(@RequestBody Problem request, BindingResult result, Principal principle) {
         LOGGER.debug("Submitting Problem task with values {}", request);
         requestValidator.validate(request, result);
         if (result.hasErrors()) {
-            throw new BadRequestException(result.getAllErrors());
+            BadRequestException apiError =  new BadRequestException(result.getAllErrors());
+            return new ResponseEntity(apiError.getErrors(), apiError.getHttpStatus()) ;
         }
         Task task = new Task();
         knapsackService.submitTask(task, request);
-		return new ResponseEntity<Task>(task,  HttpStatus.CREATED) ;
+		return new ResponseEntity<Object>(task,  HttpStatus.CREATED) ;
     }
     
 

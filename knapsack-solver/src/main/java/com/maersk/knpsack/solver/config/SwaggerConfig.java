@@ -35,7 +35,7 @@ public class SwaggerConfig {
             version += "-" + buildNumber;
         }
 
-        return new ApiInfoBuilder().title("Kapsack Optimizer Service")
+        return new ApiInfoBuilder().title("Kapsack Solver Service")
                 .description("Kapsack Solver").version(version).build();
     }
 

@@ -6,9 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Builder
@@ -18,15 +15,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @ToString
 public class Problem {
 
-    @Min(0)
     @JsonProperty("capacity")
     private int capacity;
     
-    @NotNull
     @JsonProperty("weights")
     private int[] weights;
     
-    @NotNull
     @JsonProperty("values")
     private int[] values;
 

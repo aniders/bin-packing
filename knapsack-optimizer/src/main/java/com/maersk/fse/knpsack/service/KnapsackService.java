@@ -13,8 +13,9 @@ import com.maersk.fse.knpsack.dto.Task;
 public interface KnapsackService {
 
     /**
+     * Submits Task to the Solver
      * 
-     * @param task 
+     * @param task
      * @param request
      * @return
      */
@@ -28,6 +29,7 @@ public interface KnapsackService {
     public Task getTaskById(String id);
 
     /**
+     * Returns Solution for completed task.
      * 
      * @param task
      * @return
@@ -35,6 +37,7 @@ public interface KnapsackService {
     public Solution getSolution(String task);
 
     /**
+     * Returns Problem parameters for submitted task.
      * 
      * @param task
      * @return

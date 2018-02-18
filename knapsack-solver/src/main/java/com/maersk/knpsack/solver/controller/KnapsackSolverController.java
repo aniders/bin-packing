@@ -32,7 +32,7 @@ public class KnapsackSolverController {
 	private RequestValidator validator;
 
 	@PostMapping(value = "/solve")
-	@ApiOperation(value = "Submit new problem task", produces = "application/json")
+	@ApiOperation(value = "Submit new problem task, and get Solution", produces = "application/json")
 	public ResponseEntity<Solution> submitTask(@RequestBody Problem request, BindingResult result,
 			Principal principle) {
 		LOGGER.debug("Solving Problem task with values {}", request);

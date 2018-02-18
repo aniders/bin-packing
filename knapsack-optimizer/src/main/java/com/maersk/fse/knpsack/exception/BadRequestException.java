@@ -9,8 +9,8 @@ import static org.springframework.http.HttpStatus.BAD_REQUEST;
 
 /**
  * 
- * @author arawo
- * 
+ * @author Aniruddh
+ *
  */
 public class BadRequestException extends RuntimeException {
 

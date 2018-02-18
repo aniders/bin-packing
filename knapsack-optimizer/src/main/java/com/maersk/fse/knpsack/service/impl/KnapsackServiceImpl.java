@@ -64,33 +64,40 @@ public class KnapsackServiceImpl implements KnapsackService {
         return submittedTask;
     }
 
+    /**
+     * Calls Solver service in Async, stores Solution details to data-store when it is available
+     * 
+     * @param submittedTask
+     * @param problem
+     * @return
+     */
     private Task callSover(Task submittedTask, Problem problem) {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(new MediaType[] { MediaType.APPLICATION_JSON }));
 
-        System.out.println(solverAppUser + " : " + solverAppKey);
         String auth = solverAppUser + ":" + solverAppKey;
         byte[] encodedBytes = Base64.getEncoder().encode(auth.getBytes());
 
         headers.add("Authorization", "Basic " + new String(encodedBytes));
         headers.setContentType(MediaType.APPLICATION_JSON);
         String problemJson = "";
-
         try {
             problemJson = objectMapper.writeValueAsString(problem);
         } catch (JsonProcessingException e) {
             LOGGER.error("Unable to parse Problem request", problem);
         }
         HttpEntity<String> entity = new HttpEntity<String>(problemJson, headers);
+        dao.getTaskStatus(submittedTask.getTask()).setStatus(Status.STARTED.getValue());
+        dao.getTaskStatus(submittedTask.getTask()).getTimestamps().setStarted(System.currentTimeMillis() / 1000L);
         ResponseEntity<Solution> response = restTemplate.exchange(solverApiUrl + "/solve", HttpMethod.POST, entity, Solution.class);
 
         Solution solution = response.getBody();
-        System.out.println("Response "+response.getStatusCodeValue());
-        System.out.println("Response "+response);
+        System.out.println("Response " + response.getStatusCodeValue());
+        System.out.println("Response " + response);
 
         dao.addSolution(submittedTask.getTask(), solution);
         dao.getTaskStatus(submittedTask.getTask()).setStatus(Status.COMPLETED.getValue());
-        dao.getTaskStatus(submittedTask.getTask()).getTimestamps().setCompleted(System.currentTimeMillis());
+        dao.getTaskStatus(submittedTask.getTask()).getTimestamps().setCompleted(System.currentTimeMillis() / 1000L);
         return submittedTask;
     }
 
