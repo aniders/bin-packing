@@ -34,7 +34,7 @@ output: `json` with a list of submitted, running, and completed tasks
 
 * GET `/knapsack/status`  
 
-``Browse swagger UI to find detailed API documentation http://localhost:6543/knapsack/swagger-ui.html``
+``Browse swagger UI to find detailed API documentation [http://localhost:6543/knapsack/swagger-ui.html](http://localhost:6543/knapsack/swagger-ui.html)``
 
 ## knapsack-solver
 A rest service used by `knapsack-optimizer` to perform task. This service is being called in Async mode. 
@@ -89,8 +89,8 @@ kompose is a convenience tool to go from local Docker development to managing ap
 
 
 
-### Applicating URL 
+# Applicating URL (current deployment on Cloud)
 `Services are deployed on Google Cloud platform, Kubernetes Engine   `    
->`http://35.226.56.235:6543/knapsack/swagger-ui.html `
+>`[http://35.226.56.235:6543/knapsack/swagger-ui.html](http://35.226.56.235:6543/knapsack/swagger-ui.html) `
 
 `See /kanpsack-optimizer/README.md for user credentials to access deployed services. `
