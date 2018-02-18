@@ -1,6 +1,6 @@
 version: "2"
 services:
-  knapsack-solver:
+  knapsack-solver-service:
         container_name: knapsack-solver
         build:
             context: ./knapsack-solver
