@@ -31,7 +31,10 @@ USER:
 
 ACTUATOR:    
 ``actuator : aniders``  
-> ACTUATOR can issue /shutdown request
+> ACTUATOR can issue /shutdown request  
+
+``$curl -u actuator:aniders -X POST localhost:6543/knapsack/shutdown ``  
+``$curl localhost:6543/knapsack/health``
 
 ## Dockerfile  
 ```
