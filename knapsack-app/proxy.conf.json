@@ -1,0 +1,10 @@
+{
+    "/knapsack": {
+        "target": {
+          "host": "localhost",
+          "protocol": "http:",
+          "port": 6543
+        }
+      }
+  }
+  
