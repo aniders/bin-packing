@@ -1,0 +1,20 @@
+<header id="header">
+  <h1 id="logo">
+    <a [routerLink]="['/Home']"></a>
+  </h1>
+
+  <div id="menu">
+    <a [routerLink]="['/app-tasks']" class="btn">Home</a>
+    <a [routerLink]="['/tasks']" class="btn">Get Solution</a>
+    <a [routerLink]="['/status']" class="btn">Check status</a>
+  </div>
+
+  <div class="color"></div>
+  <div class="clear"></div>
+</header>
+
+<div class="shadow"></div>
+
+<div id="container">
+  <router-outlet></router-outlet>
+</div>
