@@ -1,5 +1,13 @@
-# KnapsackApp  (Not complete - WORK in Progress)
+# KnapsackApp  (Not complete - WORK in Progress) 
+## http://35.226.203.140:4200  
+Displays list of submitted Tasks and solution details.
 
+    
+
+
+    
+    
+     
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
 
 ## Development server
