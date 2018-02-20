@@ -42,7 +42,7 @@ A rest service used by `knapsack-optimizer` to perform task. This service is bei
 This micro-service runs along with optimizer inside Docker container, and is accessible by optimizer using service name.
 
 
-##Running on Google Compute Engine instance (Container-Optimized OS, no pre-installed java / mvn. comes with Docker container runtime) 
+## Running on Google Compute Engine instance (Container-Optimized OS, no pre-installed java / mvn. comes with Docker container runtime) 
 
 1. Create instance and connect using cloud shell. 
 
@@ -92,6 +92,9 @@ kompose is a convenience tool to go from local Docker development to managing ap
 
 # Applicating URL (current deployment on Cloud)
 `Services are deployed on Google Cloud platform, Kubernetes Engine   `    
->`[http://35.226.56.235:6543/knapsack/swagger-ui.html](http://35.226.56.235:6543/knapsack/swagger-ui.html) `
+> http://35.226.56.235:6543/knapsack/swagger-ui.html 
 
 `See /kanpsack-optimizer/README.md for user credentials to access deployed services. `
+
+## Knapsack App http://35.226.203.140:4200  
+Displays list of submitted Tasks and solution details. 
