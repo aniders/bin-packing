@@ -92,9 +92,11 @@ kompose is a convenience tool to go from local Docker development to managing ap
 
 # Applicating URL (current deployment on Cloud)
 `Services are deployed on Google Cloud platform, Kubernetes Engine   `    
-> http://35.226.56.235:6543/knapsack/swagger-ui.html 
+> http://35.202.54.163:6543/knapsack/swagger-ui.html 
 
 `See /kanpsack-optimizer/README.md for user credentials to access deployed services. `
 
 ## Knapsack App http://35.226.203.140:4200  
 Displays list of submitted Tasks and solution details. 
+
+### Note - changes after deadline are done in develop branch, Those changes are done to bring UI app to certan point of completion. The code in develop is the latest.   
