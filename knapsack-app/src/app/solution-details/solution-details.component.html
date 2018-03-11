@@ -1,0 +1,17 @@
+<div class="container">
+<h2>Solution</h2>
+<div>
+  <div><span style="font-size: 14pt;">Task id:</span> <strong>{{isolution.task}}</strong></div>
+  </div>
+  <div>
+    <div><span style="font-size: 14pt;">Problem:</span></div>
+    <div style="padding-left: 30px;"><strong>capacity</strong>: {{isolution.problem.capacity}}</div>
+    <div style="padding-left: 30px; width:400px; word-wrap: break-word;"><strong>weights</strong>:  [ {{isolution.problem.weights}} ]</div>
+    <div style="padding-left: 30px; width:400px; word-wrap: break-word;"><strong>values</strong>: [ {{isolution.problem.values}} ]</div>
+    </div>
+    <div>
+      <div><span style="font-size: 14pt;">Solution</span>:</div>
+      <div style="padding-left: 30px; width:400px; word-wrap: break-word;"><strong>chosen items</strong>: [ {{isolution.solution.items}} ]</div>
+      <div style="padding-left: 30px;"><strong>time taken</strong>: {{isolution.solution.time}} miliseconds</div>
+      </div>
+ </div>

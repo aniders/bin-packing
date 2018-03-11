@@ -12,10 +12,10 @@
           </thead>
           <tbody>
           <tr *ngFor="let task of _tasksArray">
-              <td class="text-center" style="width: 15px;">{{task.task | slice:0:8 }}</td>
+              <td class="text-center" style="width: 15px;"><a [routerLink]="['/solution', task.task]" >  {{task.task | slice:0:8 }}</a></td>
               <td class="text-center" style="width: 15px;">{{task.status}}</td>
-              <td class="text-center" style="width: 200px;">{{task.timestamps.submitted | date: 'medium'}}</td>
-              <td class="text-center">{{task.timestamps.completed | date: 'medium'}}</td>
+              <td class="text-center" style="width: 200px;">{{task.timestamps.submitted * 1000  | date: 'medium'}}</td>
+              <td class="text-center">{{task.timestamps.completed * 1000  | date: 'medium'}}</td>
           </tr>
           </tbody>
       </table>

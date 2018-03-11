@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { KnapsackService } from './knapsack.service'
-import { ITask } from "./model/task";
+import { KnapsackService } from '../services/knapsack.service'
+import { ITask } from "../model/task";
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',

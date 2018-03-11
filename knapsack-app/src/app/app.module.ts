@@ -5,12 +5,14 @@ import { HttpModule } from "@angular/http";
 import { AppComponent } from './app.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthInterceptor } from './tasks/auth.interceptor';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { SolutionDetailsComponent } from './solution-details/solution-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TasksComponent
+    TasksComponent,
+    SolutionDetailsComponent
   ],
   imports: [
     BrowserModule,

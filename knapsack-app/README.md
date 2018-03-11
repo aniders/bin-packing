@@ -1,18 +1,12 @@
-# KnapsackApp  (Not complete - WORK in Progress) 
-## http://35.226.203.140:4200  
-Displays list of submitted Tasks and solution details.
+# KnapsackApp  (Not complete - WORK in Progress)
 
-    
-
-
-    
-    
-     
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve --proxy-config proxy.conf.json` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. Make sure `/knapsack` service at `http://localhost:6543` is running.
+
+Alternatively to use `/knapsack` service deployed on Google cloud, use command `ng serve --proxy-config proxy-gc.conf.json`
 
 ## Code scaffolding
 
