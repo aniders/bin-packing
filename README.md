@@ -1,5 +1,4 @@
-### Candidate name: Aniruddh K. Rawool
-# fse-knapsack
+# bin-packing
 Knapsack Optimizer Service
 
 
@@ -99,4 +98,4 @@ kompose is a convenience tool to go from local Docker development to managing ap
 ## Knapsack App http://35.226.203.140:4200  
 Displays list of submitted Tasks and solution details. 
 
-### Note - changes after deadline are done in develop branch, Those changes are done to bring UI app to certan point of completion. The code in develop is the latest.   
+ 
