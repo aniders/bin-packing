@@ -1,4 +1,4 @@
-package com.maersk.knpsack.solver.service.impl;
+package com.aniders.knpsack.solver.service.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,9 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.maersk.knpsack.solver.dto.Problem;
-import com.maersk.knpsack.solver.dto.Solution;
-import com.maersk.knpsack.solver.service.KnapsackSolver;
+import com.aniders.knpsack.solver.dto.Problem;
+import com.aniders.knpsack.solver.dto.Solution;
+import com.aniders.knpsack.solver.service.KnapsackSolver;
 
 @Service
 public class KnapsackSolverImpl implements KnapsackSolver {

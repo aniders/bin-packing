@@ -1,12 +1,12 @@
-package com.maersk.knpsack.solver.service.impl;
+package com.aniders.knpsack.solver.service.impl;
 
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.maersk.knpsack.solver.dto.Problem;
-import com.maersk.knpsack.solver.dto.Solution;
-import com.maersk.knpsack.solver.service.impl.KnapsackSolverImpl;
+import com.aniders.knpsack.solver.dto.Problem;
+import com.aniders.knpsack.solver.dto.Solution;
+import com.aniders.knpsack.solver.service.impl.KnapsackSolverImpl;
 
 public class KnapSackSolverTest {
 

@@ -1,4 +1,4 @@
-package com.maersk.fse.knapsack.controller;
+package com.aniders.fse.knapsack.controller;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.*;
@@ -21,12 +21,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import com.aniders.knpsack.solver.controller.KnapsackSolverController;
+import com.aniders.knpsack.solver.dto.Problem;
+import com.aniders.knpsack.solver.dto.Solution;
+import com.aniders.knpsack.solver.service.KnapsackSolver;
+import com.aniders.knpsack.solver.util.RequestValidator;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.maersk.knpsack.solver.controller.KnapsackSolverController;
-import com.maersk.knpsack.solver.dto.Problem;
-import com.maersk.knpsack.solver.dto.Solution;
-import com.maersk.knpsack.solver.service.KnapsackSolver;
-import com.maersk.knpsack.solver.util.RequestValidator;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration

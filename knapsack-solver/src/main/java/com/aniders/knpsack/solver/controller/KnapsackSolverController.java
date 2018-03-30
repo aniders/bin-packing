@@ -1,4 +1,4 @@
-package com.maersk.knpsack.solver.controller;
+package com.aniders.knpsack.solver.controller;
 
 import java.security.Principal;
 import io.swagger.annotations.Api;
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.maersk.knpsack.solver.dto.Problem;
-import com.maersk.knpsack.solver.dto.Solution;
-import com.maersk.knpsack.solver.exception.BadRequestException;
-import com.maersk.knpsack.solver.service.KnapsackSolver;
-import com.maersk.knpsack.solver.util.RequestValidator;
+import com.aniders.knpsack.solver.dto.Problem;
+import com.aniders.knpsack.solver.dto.Solution;
+import com.aniders.knpsack.solver.exception.BadRequestException;
+import com.aniders.knpsack.solver.service.KnapsackSolver;
+import com.aniders.knpsack.solver.util.RequestValidator;
 
 @RestController
 @Api(description = "Kapsack Solver. ")

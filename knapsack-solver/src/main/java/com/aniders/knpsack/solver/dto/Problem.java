@@ -1,4 +1,4 @@
-package com.maersk.knpsack.solver.dto;
+package com.aniders.knpsack.solver.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

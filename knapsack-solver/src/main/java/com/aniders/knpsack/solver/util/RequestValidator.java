@@ -1,10 +1,10 @@
-package com.maersk.knpsack.solver.util;
+package com.aniders.knpsack.solver.util;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import com.maersk.knpsack.solver.dto.Problem;
+import com.aniders.knpsack.solver.dto.Problem;
 
 @Component
 public class RequestValidator implements Validator {

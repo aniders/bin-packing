@@ -1,4 +1,4 @@
-package com.maersk.knpsack.solver.config;
+package com.aniders.knpsack.solver.config;
 
 import java.io.IOException;
 

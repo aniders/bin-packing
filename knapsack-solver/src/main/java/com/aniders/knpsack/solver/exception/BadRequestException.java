@@ -1,4 +1,4 @@
-package com.maersk.knpsack.solver.exception;
+package com.aniders.knpsack.solver.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.ObjectError;

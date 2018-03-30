@@ -1,4 +1,4 @@
-package com.maersk.knpsack.solver.config;
+package com.aniders.knpsack.solver.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

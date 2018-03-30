@@ -1,7 +1,7 @@
-package com.maersk.knpsack.solver.service;
+package com.aniders.knpsack.solver.service;
 
-import com.maersk.knpsack.solver.dto.Problem;
-import com.maersk.knpsack.solver.dto.Solution;
+import com.aniders.knpsack.solver.dto.Problem;
+import com.aniders.knpsack.solver.dto.Solution;
 
 /**
  * 
