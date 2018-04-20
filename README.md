@@ -1,5 +1,4 @@
 # bin-packing
-Knapsack Optimizer Service
 
 
 
@@ -84,18 +83,3 @@ kompose is a convenience tool to go from local Docker development to managing ap
 
 
 7. Service starts on port 6543 
-
-
-
-
-
-# Applicating URL (current deployment on Cloud)
-`Services are deployed on Google Cloud platform, Kubernetes Engine   `    
-> http://35.202.54.163:6543/knapsack/swagger-ui.html 
-
-`See /kanpsack-optimizer/README.md for user credentials to access deployed services. `
-
-## Knapsack App http://35.226.203.140:4200  
-Displays list of submitted Tasks and solution details. 
-
- 
